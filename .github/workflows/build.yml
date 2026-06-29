@@ -1,4 +1,4 @@
-name: Build Android AAB for Darse Islami
+name: Build Android APK for Darse Islami
 
 on:
   push:
@@ -34,14 +34,14 @@ jobs:
         npx cap add android
         npx cap sync
 
-    - name: Build Android Release AAB
+    - name: Build Android Release APK
       run: |
         cd android
-        ./gradlew bundleRelease
+        ./gradlew assembleRelease
 
-    - name: Upload AAB Package
+    - name: Upload APK Package
       uses: actions/upload-artifact@v4
       with:
-        name: Darse-Islami-Update-AAB
-        path: android/app/build/outputs/bundle/release/app-release.aab
+        name: Darse-Islami-Update-APK
+        path: android/app/build/outputs/apk/release/app-release-unsigned.apk
         
