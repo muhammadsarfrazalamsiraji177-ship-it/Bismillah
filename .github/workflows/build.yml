@@ -34,14 +34,14 @@ jobs:
         npx cap add android
         npx cap sync
 
-    - name: Build Android Release APK
+    - name: Build Android Debug APK
       run: |
         cd android
-        ./gradlew assembleRelease
+        ./gradlew assembleDebug
 
     - name: Upload APK Package
       uses: actions/upload-artifact@v4
       with:
-        name: Darse-Islami-Update-APK
-        path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+        name: Darse-Islami-Debug-APK
+        path: android/app/build/outputs/apk/debug/app-debug.apk
         
