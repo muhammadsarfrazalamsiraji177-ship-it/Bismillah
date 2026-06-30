@@ -1,4 +1,4 @@
-name: Build Android APK for Darse Islami
+name: Build Android AAB for Darse Islami
 
 on:
   push:
@@ -34,15 +34,15 @@ jobs:
         npx cap add android
         npx cap sync
 
-    - name: Build Android Debug APK
+    - name: Build Android Release AAB
       run: |
         cd android
-        ./gradlew assembleDebug
+        ./gradlew bundleRelease
 
-    - name: Upload APK File Directly
+    - name: Upload AAB Package
       uses: actions/upload-artifact@v4
       with:
-        name: app-debug
-        path: android/app/build/outputs/apk/debug/app-debug.apk
-        compression-level: 0 # یہ فائل کو زپ (ZIP) نہیں کرے گا، براہ راست رکھے گا
+        name: Darse-Islami-Update-AAB
+        path: android/app/build/outputs/bundle/release/app-release.aab
+
         
